@@ -1,5 +1,5 @@
 #importar la libreria de flask
-from flask import Flask
+from flask import Flask,render_template
 
 #inicializar la variable app con flask
 app = Flask(__name__)
@@ -60,3 +60,8 @@ def operacion(operacion, num1, num2):
         return f"El resultado de la división es: {resultado}"
     else:
         return "Operación no válida. Las opciones son: suma, resta, multiplicacion, division"
+
+
+@app.route("/<nombre>") #esta seria la ruta principal "/" va directo a http://localhost:5000
+def llamarhtml(nombre):
+    return render_template("hola.html",name = nombre)
